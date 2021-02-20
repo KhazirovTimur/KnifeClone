@@ -101,7 +101,7 @@ public class LogBehavior : MonoBehaviour
         return this.gameObject.transform.childCount - childCountStart;
     }
 
-    private bool BoolGenerator()
+    public bool BoolGenerator()
     {
         int prob = Random.Range(0,100);
         return prob <= 50;

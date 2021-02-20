@@ -98,8 +98,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         level++;
         knifeCount = Random.Range(minKnifes, maxKnifes);
-        maxKnifes++;
-        minKnifes++;
+        if(log.BoolGenerator())
+            maxKnifes++;
+        if (log.BoolGenerator() && maxKnifes - minKnifes > 2)
+            minKnifes++;
         goal = knifeCount;
         gameIsOver = false;
         scoreRound = 0;
