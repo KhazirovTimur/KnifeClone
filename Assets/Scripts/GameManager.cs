@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
     public bool gameIsOver = false;
     private int highScore;
     private int maxLevel;
-    private int maxKnifes = 9;
+    private int maxKnifes = 10;
+    private int minKnifes;
     
 
     public GameEventSO WinEvent;
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         goal = knifeCount;
+        minKnifes = knifeCount;
         UpdateUi.Raise();
     }
 
@@ -95,8 +97,9 @@ public class GameManager : MonoBehaviour
         Destroy(log.gameObject);
         yield return new WaitForSeconds(1);
         level++;
-        knifeCount = Random.Range(5, maxKnifes);
+        knifeCount = Random.Range(minKnifes, maxKnifes);
         maxKnifes++;
+        minKnifes++;
         goal = knifeCount;
         gameIsOver = false;
         scoreRound = 0;
