@@ -9,13 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da02dc6cb8a3fb14799a77ee1917e956, type: 3}
-  m_Name: Log SO
+  m_Script: {fileID: 11500000, guid: 17306a5a21deb7249aebb0527b618feb, type: 3}
+  m_Name: GameOver
   m_EditorClassIdentifier: 
-  appleSpawnChance: 25
-  rotSpeed: 90
-  rotSpeedSeed: 90
-  minSpeed: 0
-  minSpeedSeed: 60
-  interval: 2
-  minSpeedInterval: 1

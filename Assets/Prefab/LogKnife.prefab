@@ -15,13 +15,14 @@ GameObject:
   - component: {fileID: 6265783951800116978}
   - component: {fileID: -6392254500577258088}
   - component: {fileID: 1012041359}
+  - component: {fileID: 1775251526427612112}
   m_Layer: 10
   m_Name: LogKnife
   m_TagString: Knife
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &569622430225572141
 Transform:
   m_ObjectHideFlags: 0
@@ -99,7 +100,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0555391, y: -7.4449224}
+  m_Offset: {x: 0.059275664, y: -7.4449224}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 1}
@@ -110,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.77596015, y: 3.670155}
+  m_Size: {x: 0.4395516, y: 3.6701546}
   m_EdgeRadius: 0
 --- !u!114 &-1958764129222489078
 MonoBehaviour:
@@ -126,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minAngle: 50
   maxAngle: 160
+  bc: {fileID: 0}
 --- !u!114 &6265783951800116978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,3 +190,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &1775251526427612112
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5717545390560741061}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.025514036, y: -9.130277}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 1}
+    oldSize: {x: 1.48, y: 9.28}
+    newSize: {x: 1.48, y: 9.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.6920662, y: 0.2994442}
+  m_EdgeRadius: 0

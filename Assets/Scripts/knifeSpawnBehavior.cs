@@ -6,12 +6,14 @@ public class knifeSpawnBehavior : MonoBehaviour
 {
 
     public GameObject knife;
-    public GameEventSO ThrowKnife;
+   
     [SerializeField]
     private float delay = 0.5f;
+    
     private float cooldown;
     private bool lastKnife = false;
 
+    public GameEventSO ThrowKnife;
 
     // Start is called before the first frame update
     void Start()

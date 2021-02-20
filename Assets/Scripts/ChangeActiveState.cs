@@ -9,7 +9,6 @@ public class ChangeActiveState : MonoBehaviour
     {
         if(this.isActiveAndEnabled)
          this.gameObject.SetActive(false);
-        else
-            this.gameObject.SetActive(true);
+     
     }
 }

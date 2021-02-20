@@ -8,11 +8,13 @@ public class UIGameBehaviourScript : MonoBehaviour
     public Text score;
     public Text appleCount;
     public Text knifesCount;
+    public Text level;
 
     private int scoreValue = 0;
     private int appleCountValue = 0;
     private int knifeCountCurrentValue = 0;
     private int knifeCountAllValue = 0;
+    private int levelValue = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,9 +36,11 @@ public class UIGameBehaviourScript : MonoBehaviour
         appleCountValue = GameManager.gm.appleCount;
         knifeCountCurrentValue = GameManager.gm.knifeCount;
         knifeCountAllValue = GameManager.gm.goal;
+        levelValue = GameManager.gm.level;
         score.text = scoreValue.ToString();
         appleCount.text = appleCountValue.ToString();
         string tmp = knifeCountCurrentValue.ToString() + "/" + knifeCountAllValue.ToString();
-        knifesCount.text = tmp;    
+        knifesCount.text = tmp;
+        level.text = "Level " + levelValue.ToString();
     }
 }

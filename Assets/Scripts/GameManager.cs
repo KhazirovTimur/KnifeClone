@@ -9,26 +9,36 @@ public class GameManager : MonoBehaviour
     public int goal { get; private set; }
     public int scoreRound { get; private set; } = 0;
     public int scoreGlobal { get; private set; } = 0;
-    public int appleCount { get; private set; } = 0;
+    public int appleCount { get; private set; } 
+    public int level { get; private set; } = 1;
 
     public static GameManager gm;
     public bool gameIsOver = false;
+    private int highScore;
+    private int maxLevel;
+    private int maxKnifes = 9;
     
 
     public GameEventSO WinEvent;
     public GameEventSO lastKnife;
     public GameEventSO UpdateUi;
     public GameEventSO NextLevel;
+    public GameEventSO GameOver;
+    
     public LogBehavior log;
     // Start is called before the first frame update
     private void Awake()
     {
         if (gm == null)
             gm = this;
+        highScore = PlayerPrefsManager.GetHighScore();
+        appleCount = PlayerPrefsManager.GetApplesCount();
+        maxLevel = PlayerPrefsManager.GetMaxLevel();
     }
     void Start()
     {
         goal = knifeCount;
+        UpdateUi.Raise();
     }
 
     // Update is called once per frame
@@ -52,6 +62,11 @@ public class GameManager : MonoBehaviour
 
     public void KnifeHitKnife() {
         gameIsOver = true;
+        if (highScore < scoreGlobal+scoreRound)
+            PlayerPrefsManager.SetHighScore(scoreGlobal+scoreRound);
+        if (maxLevel < level)
+            PlayerPrefsManager.SetMaxLevel(level);
+        StartCoroutine(GameOverState());
     }
 
 
@@ -62,6 +77,7 @@ public class GameManager : MonoBehaviour
 
     public void AppleIncrease() {
         appleCount++;
+        PlayerPrefsManager.SetApplesCount(appleCount);
         UpdateUi.Raise();
     }
 
@@ -78,12 +94,19 @@ public class GameManager : MonoBehaviour
         log.gameObject.SetActive(true);
         Destroy(log.gameObject);
         yield return new WaitForSeconds(1);
-        knifeCount = Random.Range(5, 9);
+        level++;
+        knifeCount = Random.Range(5, maxKnifes);
+        maxKnifes++;
         goal = knifeCount;
         gameIsOver = false;
         scoreRound = 0;
         NextLevel.Raise();
         log = FindObjectOfType<LogBehavior>();
         UpdateUi.Raise();
+    }
+
+    IEnumerator GameOverState() {
+        yield return new WaitForSeconds(1);
+        GameOver.Raise();
     }
 }

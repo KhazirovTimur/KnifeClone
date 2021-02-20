@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script is used for throwing objects to sides, making "explosion" effect
+
 public class DestructionEffectFlyToSide : MonoBehaviour
 {
     public Rigidbody2D rb;

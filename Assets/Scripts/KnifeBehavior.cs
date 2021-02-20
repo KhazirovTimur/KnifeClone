@@ -5,54 +5,59 @@ using UnityEngine;
 public class KnifeBehavior : MonoBehaviour
 {
     [SerializeField]
-    private float knifeSpeed = 150f;
+    List<knifeScriptableObject> knifeObject; //knife skins
+
     [SerializeField]
-    List<knifeScriptableObject> knifeObject;
+    private float knifeSpeed = 150f; 
+
     [SerializeField]
-    private int skinToUse = 0;
+    private int skinToUse = 1;
+
     private Rigidbody2D rb;
-    private BoxCollider2D bc;
+    private List<BoxCollider2D> bc = new List<BoxCollider2D>();
     private bool wasUsed = false;
 
     public GameEventSO knifeHitLog;
+    public GameEventSO knifeHitKnife;
     public GameObject particles;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        skinToUse = PlayerPrefsManager.GetKnifeNumber();
+        Vibration.Init();
+    }
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
-        bc = this.GetComponent<BoxCollider2D>();
+        bc.Add(this.GetComponents<BoxCollider2D>()[0]);
+        bc.Add(this.GetComponents<BoxCollider2D>()[1]);
         rb.isKinematic = true;
+        bc[0].isTrigger = true;
+        bc[1].isTrigger = true;
         this.gameObject.GetComponent<SpriteRenderer>().sprite = knifeObject[skinToUse].GetSprite();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-      
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-
-       
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag is "Knife")
         {
+            Vibration.VibratePeek();
+            bc[0].isTrigger = true;
+            bc[1].isTrigger = true;
             GameManager.gm.KnifeHitKnife();
             rb.velocity = new Vector2(0, 0);
             this.rb.gravityScale = 3;
-            Debug.Log("DANGER");
+            knifeHitKnife.Raise();
         }
 
         if (collision.gameObject.tag is "Log")
         {
+            Vibration.VibratePop();
             this.transform.parent = collision.transform;
-            rb.velocity = new Vector2(0, 0);
             rb.isKinematic = true;
+            rb.velocity = new Vector2(0, 0);
+            rb.angularVelocity = 0;
             knifeHitLog.Raise();
         }
 
@@ -66,12 +71,14 @@ public class KnifeBehavior : MonoBehaviour
             rb.isKinematic = false;
             rb.velocity = (new Vector2(0, knifeSpeed));
             wasUsed = true;
-            bc.isTrigger = false;
+            bc[0].isTrigger = false;
+            bc[1].isTrigger = false;
         }
     }
 
-    public void SetTrigger() {
-        bc.isTrigger = true;
+    public void SetTrigger() { //set knife to trigger after getting WinEvent to exlcude situations, when triggering KnifeHitKnife after destroying log
+        bc[0].isTrigger = true;
+        bc[1].isTrigger = true;
     }
 
    

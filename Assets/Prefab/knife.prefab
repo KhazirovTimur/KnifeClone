@@ -10,13 +10,16 @@ GameObject:
   m_Component:
   - component: {fileID: 7868894991827092365}
   - component: {fileID: 7868894991827092364}
-  - component: {fileID: 7868894991827092355}
   - component: {fileID: 7868894991827092354}
   - component: {fileID: 3665006251137628147}
   - component: {fileID: 4933171076097460729}
   - component: {fileID: -7748834837337590522}
   - component: {fileID: 2026026335072089502}
   - component: {fileID: 7868894991827092353}
+  - component: {fileID: 8687868096183138598}
+  - component: {fileID: 7617202970769807447}
+  - component: {fileID: 4942657813957309220}
+  - component: {fileID: 8873572159156128949}
   m_Layer: 10
   m_Name: knife
   m_TagString: Knife
@@ -88,32 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &7868894991827092355
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7868894991827092352}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.8732795}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.16, y: 6.49}
-    newSize: {x: 1.16, y: 6.49}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.16, y: 4.7434406}
-  m_EdgeRadius: 0
 --- !u!114 &7868894991827092354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,13 +103,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc96c0e0fe1fa34688b31f547dfd022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knifeSpeed: 35
   knifeObject:
   - {fileID: 11400000, guid: 338d9e99cb8d6c64aa8e7527b59e615e, type: 2}
   - {fileID: 11400000, guid: 687fc73104cae774087be1fbe441fc1b, type: 2}
   - {fileID: 11400000, guid: 4668dfc5c07de4642a51f80c49ea9249, type: 2}
+  knifeSpeed: 35
   skinToUse: 2
   knifeHitLog: {fileID: 11400000, guid: 9c8eb18a2fddab449b722b889d61fac4, type: 2}
+  knifeHitKnife: {fileID: 11400000, guid: 11d19aa92b16a084ebd5f1dc7c06824b, type: 2}
   particles: {fileID: 8329856013560827766, guid: cc1ffc04887442e4a983b2833702ff8f,
     type: 3}
 --- !u!114 &3665006251137628147
@@ -251,3 +229,94 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!61 &8687868096183138598
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7868894991827092352}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.004841745, y: -1.1233289}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.16, y: 6.49}
+    newSize: {x: 1.16, y: 6.49}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.27876812, y: 4.243342}
+  m_EdgeRadius: 0
+--- !u!114 &7617202970769807447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7868894991827092352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b7e0965c052cb48842440ce376e769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: c48e80d1f1ee6464586b2bdd597553c0, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4942657813957309220}
+        m_MethodName: Change
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4942657813957309220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7868894991827092352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f77fa0716936e14c98fac41694cc205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &8873572159156128949
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7868894991827092352}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.004604757, y: -3.1018853}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.16, y: 6.49}
+    newSize: {x: 1.16, y: 6.49}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.6850733, y: 0.28622913}
+  m_EdgeRadius: 0

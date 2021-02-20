@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1826248002138859326}
   - component: {fileID: 230856385}
   - component: {fileID: 230856386}
+  - component: {fileID: 1290312944}
+  - component: {fileID: 1290312945}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -71,8 +73,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c00dd1dae22a4459139656dbc16ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knifeCount: 4
   gameIsOver: 0
   WinEvent: {fileID: 11400000, guid: eaf51efc371125b439daf25dce8f0dcb, type: 2}
   lastKnife: {fileID: 11400000, guid: ac7999c41e1ab8340b29b5f2b2909245, type: 2}
+  UpdateUi: {fileID: 11400000, guid: c897af871f365264582e2cb4fcb1d158, type: 2}
+  NextLevel: {fileID: 11400000, guid: 4367db3de1c3fd34c8ae72e4ba6d2d21, type: 2}
+  GameOver: {fileID: 11400000, guid: c48e80d1f1ee6464586b2bdd597553c0, type: 2}
   log: {fileID: 0}
+--- !u!114 &1290312944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4256193725663016536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b7e0965c052cb48842440ce376e769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 9c8eb18a2fddab449b722b889d61fac4, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 230856386}
+        m_MethodName: UpdateScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1290312945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4256193725663016536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b7e0965c052cb48842440ce376e769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 62dbe94b172000b47b29ac446496294f, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 230856386}
+        m_MethodName: AppleIncrease
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
